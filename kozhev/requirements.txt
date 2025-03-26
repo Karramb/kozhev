@@ -1,0 +1,4 @@
+django==4.2.20
+django_bootstrap5==25.1
+django_debug_toolbar==5.1.0
+Pillow==11.1.0

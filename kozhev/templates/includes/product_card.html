@@ -1,0 +1,23 @@
+<div class="col d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        {% if product.image %}
+          <a href="{{ product.image.url }}" target="_blank">
+            <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ product.image.url }}">
+          </a>
+        {% endif %}
+        <h5 class="card-title">{{ product.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <small>
+            {% if not product.is_published %}
+              <p class="text-danger">Изделие снято с продаж</p>
+            {% elif not product.category.is_published %}
+              <p class="text-danger">Выбранная категория снята с публикации</p>
+            {% endif %}
+          </small>
+        </h6>
+        <p class="card-text">{{ product.text|truncatewords:10 }}</p>
+        <a href="{% url 'main:product_detail' product.id %}" class="card-link">Читать полный текст</a>
+      </div>
+    </div>
+  </div>

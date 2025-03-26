@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+  Frenzy&BlackDoe
+{% endblock %}
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% for product in page_obj %}
+    <div class="product-tile">
+      {% include "includes/product_card.html" %}
+    </div>
+  {% endfor %}
+  {% include "includes/paginator.html" %}
+{% endblock %}

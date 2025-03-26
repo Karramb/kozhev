@@ -1,0 +1,27 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-light" style="background-color: #EED9C4">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'main:index' %}">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Frenzy&BlackDoe
+      </a>
+      {% with request.resolver_match.view_name as view_name %}
+        <ul class="nav  nav-pills">
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'main:about' %} text-secondary {% endif %}" href="{% url 'main:about' %}">
+              О проекте
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'main:delivery' %} text-secondary {% endif %}" href="{% url 'main:delivery' %}">
+              Доставка
+            </a>
+          </li>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+            </div>
+        </ul>
+      {% endwith %}
+    </div>
+  </nav>
+</header>

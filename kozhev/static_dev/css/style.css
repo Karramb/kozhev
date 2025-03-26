@@ -1,0 +1,79 @@
+/* Основной контейнер */
+.product-tile {
+    display: inline-block;
+    width: 450px;
+    margin: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Изображение товара */
+  .product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .product-image:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Название товара */
+  .product-name {
+    font-size: 16px;
+    padding: 10px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Цена товара */
+  .product-price {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Кнопка добавления в корзину */
+  .add-to-cart-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #0056b3;
+  }
+
+  .navbar-light .navbar-nav .nav-link {
+    color: red; /* Устанавливаем красный цвет текста */
+  }
+
+  .buy-button {
+    background-color: #4CAF50; /* Зеленый цвет фона */
+    border: none; /* Убираем стандартную рамку */
+    color: white; /* Белый цвет текста */
+    padding: 15px 32px; /* Поля вокруг текста */
+    text-align: center; /* Центрирование текста */
+    text-decoration: none; /* Убираем подчеркивание у ссылок */
+    display: inline-block; /* Размещение кнопки в строке */
+    font-size: 16px; /* Размер шрифта */
+    margin: 4px 2px; /* Отступы вокруг кнопки */
+    cursor: pointer; /* Курсор мыши становится указателем при наведении */
+    border-radius: 5px; /* Скругление углов кнопки */
+    transition: all 0.3s ease; /* Анимация перехода */
+  }
+  
+  .buy-button:hover {
+    background-color: #45a049; /* Темнее зеленый цвет при наведении */
+  }
+  
+  .buy-button:focus {
+    outline: none; /* Убираем контур выделения */
+  }
