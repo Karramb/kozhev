@@ -23,7 +23,7 @@ class IsPublished(CreatedAt):
 
     class Meta:
         abstract = True
-        
+
 
 class Category(IsPublished):
     title = models.CharField(
@@ -48,7 +48,7 @@ class Category(IsPublished):
 
 class Product(IsPublished):
     name = models.CharField(
-        max_length = 50,
+        max_length=50,
         verbose_name='Изделие'
     )
     price = models.PositiveIntegerField(

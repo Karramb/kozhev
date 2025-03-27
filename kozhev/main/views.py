@@ -36,6 +36,7 @@ class About(TemplateView):
 class Delivery(TemplateView):
     template_name = 'pages/delivery.html'
 
+
 def page_not_found(request, exception):
     return render(request, 'pages/404.html', status=404)
 
@@ -52,21 +53,18 @@ def application_view(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST)
         if form.is_valid():
-            # Получаем данные из формы
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            
-            # Отправляем данные по электронной почте
             subject = f'Заявка от {name}'
             body = f'{message}\n\nОт: {email}'
             from_email = settings.DEFAULT_FROM_EMAIL
-            recipient_list = [settings.ADMIN_EMAILS]  # Администраторы сайта
+            recipient_list = [settings.ADMIN_EMAILS]
             send_mail(subject, body, from_email, recipient_list)
-            
-            return render(request, 'main/application.html')  # Перенаправление на страницу успеха
+
+            return render(request, 'main/application.html')
     else:
         form = ApplicationForm()
-        
+
     context = {'form': form}
     return render(request, 'main/application.html', context)
