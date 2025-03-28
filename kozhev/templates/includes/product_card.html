@@ -2,8 +2,8 @@
     <div class="card" style="width: 40rem;">
       <div class="card-body">
         {% if product.image %}
-          <a href="{{ product.image.url }}" target="_blank">
-            <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ product.image.url }}">
+          <a href="{% url 'main:product_detail' product.id %}">
+            <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block limited-img" src="{{ product.image.url }}">
           </a>
         {% endif %}
         <h5 class="card-title">{{ product.name }}</h5>
