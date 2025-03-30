@@ -46,3 +46,12 @@
     font-weight: bold; /* Жирность шрифта */
     font-size: 24px; /* Размер шрифта */
   }
+  .card {
+    border: none;
+    box-shadow: none;
+  }
+  .card .col-md-6.right {
+    background-color: #EED9C4; /* Светло-коричневый цвет */
+    width: 25%; /* Ограничиваем ширину до 40% от родительского блока */
+    border-radius: 10px;
+  }

@@ -9,18 +9,30 @@
   {% bootstrap_javascript %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <div class="col d-flex justify-content-center">
-    <div class="card" style="width: 40rem;">
-      <div class="card-body">
-        {% if product.image %}
-          <a href="{{ product.image.url }}" target="_blank">
+    <div class="card" style="width: 60rem;">
+      <!-- Используем сетку -->
+      <div class="row no-gutters">
+        <!-- Левый столбец с изображением -->
+        <div class="col-md-6">
+          {% if product.image %}
             <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ product.image.url }}">
-          </a>
-        {% endif %}
-        <div>
-          <h5 class="card-title"><span class="price">{{ product.name }}</span></h5>
-          <button type="button" class="buy-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
+          {% endif %}
         </div>
-        <span class="price">₽{{ product.price }}</span>
+        
+        <!-- Правый столбец с информацией -->
+        <div class="col-md-6 d-flex flex-column justify-content-between p-4 right">
+          <div>
+            <h5 class="card-title"><span class="price">{{ product.name }}</span></h5>
+            <p class="card-text">{{ product.text }}</p>
+          </div>
+          
+          <div class="d-flex align-items-end">
+            <span class="price">₽{{ product.price }}</span>
+            <button type="button" class="buy-button ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
+          </div>
+        </div>
+      </div>
+    </div>
                 <!-- Модальное окно -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
