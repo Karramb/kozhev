@@ -1,4 +1,4 @@
-/* Основной контейнер */
+/* Основной контейнер, используется на странице product_list*/
 .product-tile {
     display: inline-block;
     height: 25%;
@@ -48,8 +48,30 @@
     border: none;
     box-shadow: none;
   }
-  .card .col-md-6.right {
+
+
+/* Product_detail*/
+.container_pd {
+    display: flex;
+    justify-content: center;
+}
+
+.left-block {
+    width: 60%;
+    margin-right: 20px;
+}
+
+.right-block {
+    width: 40%;
     background-color: #EED9C4; /* Светло-коричневый цвет */
     width: 25%; /* Ограничиваем ширину до 40% от родительского блока */
     border-radius: 10px;
-  }
+}
+
+button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}

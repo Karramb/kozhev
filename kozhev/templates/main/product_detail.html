@@ -8,29 +8,20 @@
   {% bootstrap_css %}
   {% bootstrap_javascript %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  <div class="col d-flex justify-content-center">
-    <div class="card" style="width: 60rem;">
-      <!-- Используем сетку -->
-      <div class="row no-gutters">
-        <!-- Левый столбец с изображением -->
-        <div class="col-md-6">
+  <div class="container_pd">
+    <div class="left-block">
           {% if product.image %}
             <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ product.image.url }}">
           {% endif %}
-        </div>
+    </div>
         
-        <!-- Правый столбец с информацией -->
-        <div class="col-md-6 d-flex flex-column justify-content-between p-4 right">
-          <div>
-            <h5 class="card-title"><span class="price">{{ product.name }}</span></h5>
-            <p class="card-text">{{ product.text }}</p>
-          </div>
-          
-          <div class="d-flex align-items-end">
-            <span class="price">₽{{ product.price }}</span>
-            <button type="button" class="buy-button ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
-          </div>
-        </div>
+    <!-- Правый столбец с информацией -->
+    <div class="right-block">
+      <div>
+        <h5 class="card-title"><span class="price">{{ product.name }}</span></h5>
+        <p class="card-text">{{ product.text }}</p>
+        <span class="price">₽{{ product.price }}</span>
+        <button type="button" class="buy-button ml-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
       </div>
     </div>
                 <!-- Модальное окно -->
@@ -77,7 +68,5 @@
             {% endif %}
           </small>
         </h6>
-      </div>
-    </div>
   </div>
 {% endblock %}
