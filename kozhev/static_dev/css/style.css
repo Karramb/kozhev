@@ -1,8 +1,8 @@
 /* Основной контейнер */
 .product-tile {
     display: inline-block;
-    height: 350px;
-    width: 350px;
+    height: 25%;
+    width: 25%;
     margin: 10px;
     border: 1px solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -23,8 +23,6 @@
     cursor: pointer; /* Курсор мыши становится указателем при наведении */
     border-radius: 5px; /* Скругление углов кнопки */
     transition: all 0.3s ease; /* Анимация перехода */
-    float: right;
-    margin-top: -30px;
   }
   
   .buy-button:hover {

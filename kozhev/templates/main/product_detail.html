@@ -38,16 +38,21 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Отправка заявки</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Отправка заявки. {{ product.name }}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <!-- Форма для отправки заявки -->
           <form method="POST" action="{% url 'main:application' %}">
             {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{ product.id }}">
             <div class="mb-3">
               <label for="nameInput" class="form-label">Ваше имя:</label>
               <input type="text" class="form-control" id="nameInput" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="phoneInput" class="form-label">Номер телефона:</label>
+              <input type="tel" class="form-control" id="phoneInput" name="phone" required>
             </div>
             <div class="mb-3">
               <label for="emailInput" class="form-label">Электронная почта:</label>
