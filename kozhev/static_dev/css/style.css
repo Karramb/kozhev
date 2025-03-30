@@ -23,6 +23,8 @@
     cursor: pointer; /* Курсор мыши становится указателем при наведении */
     border-radius: 5px; /* Скругление углов кнопки */
     transition: all 0.3s ease; /* Анимация перехода */
+    float: right;
+    margin-top: -30px;
   }
   
   .buy-button:hover {
@@ -37,4 +39,10 @@
     max-width: 90%;
     max-height: 250px;
     object-fit: contain;
+  }
+  .price {
+    color: brown; /* Цвет текста */
+    font-family: 'Arial', sans-serif; /* Красивый шрифт (можно заменить на любой другой) */
+    font-weight: bold; /* Жирность шрифта */
+    font-size: 24px; /* Размер шрифта */
   }

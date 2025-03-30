@@ -16,10 +16,12 @@
             <img class="border-3 rounded img-fluid img-thumbnail mb-2 mx-auto d-block" src="{{ product.image.url }}">
           </a>
         {% endif %}
-        <h5 class="card-title">{{ product.name }}</h5>
-        <h5 class="card-title">Цена товара = {{ product.price }}</h5>
-        <button type="button" class="buy-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
-        <!-- Модальное окно -->
+        <div>
+          <h5 class="card-title"><span class="price">{{ product.name }}</span></h5>
+          <button type="button" class="buy-button" data-bs-toggle="modal" data-bs-target="#exampleModal">Купить</button>
+        </div>
+        <span class="price">₽{{ product.price }}</span>
+                <!-- Модальное окно -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
