@@ -152,4 +152,4 @@ sent_emails/
 # Others
 node_modules
 /docker-compose.yml
-/data
+data/rabbitmq/
