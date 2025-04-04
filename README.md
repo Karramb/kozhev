@@ -12,3 +12,5 @@ server {
         proxy_pass http://127.0.0.1:8000;
     }
 }
+
+При установке celery + rabbitmq на win10 запускать workera celery командой celery -A kozhev worker -l info --pool=solo

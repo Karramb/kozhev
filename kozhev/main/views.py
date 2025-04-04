@@ -1,7 +1,5 @@
 from django.conf import settings
-from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import (
     DetailView, ListView, TemplateView
 )
@@ -10,6 +8,7 @@ from main.constants import PAGINATION_NUM
 from main.forms import ApplicationForm
 from main.models import Product
 from main.service import filter_products
+from main.tasks import send_application_email
 
 
 class IndexListViews(ListView):
@@ -57,10 +56,9 @@ def application_view(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             subject = f'Заявка от {name}'
-            body = f'{message}\n\nОт: {email}'
             from_email = settings.DEFAULT_FROM_EMAIL
             recipient_list = [settings.ADMIN_EMAILS]
-            send_mail(subject, body, from_email, recipient_list)
+            send_application_email.delay(email, message, subject, from_email, recipient_list)
 
             return render(request, 'main/application.html')
     else:
