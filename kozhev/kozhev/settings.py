@@ -121,7 +121,7 @@ ADMIN_EMAILS = getenv('ADMIN_EMAILS')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #Celery conf
-CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672/'
 CELERY_RESULT_BACKEND = 'rpc://'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'

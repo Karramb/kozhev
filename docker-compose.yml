@@ -1,0 +1,63 @@
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit log_levels [{connection,error},{default,error}] disk_free_limit 2147483648 # 2 гигабита
+    ports:
+      - "5672:5672"  # AMQP port
+      - "15672:15672"  # Management UI port
+    volumes:
+      - ./data/rabbitmq/data/:/var/lib/rabbitmq/
+      - ./data/rabbitmq/log/:/var/log/rabbitmq/
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  backend:
+    build: ./kozhev/
+    env_file: .env
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - static:/static/
+      - media:/app/media/
+      - ./sent_emails:/app/sent_emails
+    depends_on:
+      - db
+      - rabbitmq
+  celery:
+    restart: always
+    build: ./kozhev/
+    command: celery -A kozhev worker -l info --pool=solo
+    volumes:
+      - .:/test_celery
+    environment:
+      CELERY_BROKER_URL: amqp://guest:guest@rabbitmq:5672//
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+  gateway:
+    build: ./gateway/
+    env_file: .env
+    volumes:
+      - static:/static
+      - media:/app/media/
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+      - backend
